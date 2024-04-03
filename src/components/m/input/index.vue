@@ -25,8 +25,10 @@ const className = computed(() => {
     color: props.color
   })
 })
+
+const model = defineModel<string>()
 </script>
 
 <template>
-  <input type="text" :class="className" />
+  <input v-model="model" type="text" :class="className" />
 </template>

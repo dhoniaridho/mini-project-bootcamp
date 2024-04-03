@@ -4,6 +4,7 @@ import { computed } from 'vue'
 
 const props = defineProps<{
   color: keyof typeof colors
+  loading?: boolean
 }>()
 
 const colors = {
@@ -28,6 +29,7 @@ const className = computed(() => {
 <template>
   <button :class="className">
     <slot name="icon" />
-    <slot />
+    <div v-if="loading">loading ...</div>
+    <slot v-else />
   </button>
 </template>

@@ -8,4 +8,10 @@ const router = createRouter({
   routes
 })
 
-export default router 
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('accessToken')
+  if (to.meta.requiresAuth && !token) return next('/auth/login')
+  next()
+})
+
+export default router
